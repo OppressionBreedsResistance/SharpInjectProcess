@@ -15,6 +15,7 @@ Warto polaczyc ten program z programem SharpConverter i uruchomić go w pamięci
 ## AV Evasion
 - Xorowanie shellcode
 - Xorowanie nazw WinApi calli
+- Reflective Function Loading
 
 ## Sandbox Evasion
 - Wykorzystanie non-emulated API Calla "VirtualAllocExNuma"
