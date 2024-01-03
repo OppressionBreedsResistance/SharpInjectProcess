@@ -2,7 +2,7 @@
 
 ## O co chodzi? 
 SharpInjectProcess jest programem który wstrzykuje ShellCode do dowolnie wybranego programu. 
-Domyslnie SharpInjectProcess wstrzykuje ShellCode uruchamiajacy kalkulator do procesu OneDrive
+Domyslnie SharpInjectProcess wstrzykuje ShellCode uruchamiajacy sesje meterpretera do procesu notepad. Nalezy zmienic shellcode. 
 Program wykorzystuje reflective function loading i posiada tylko trzy importy:
 - LoadLibrary
 - GetProcAddress
